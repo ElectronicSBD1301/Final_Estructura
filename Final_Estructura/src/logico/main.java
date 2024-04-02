@@ -8,12 +8,12 @@ public class main {
         int choice;
 
         do {
-            System.out.println("Bienvenido al menú:");
-            System.out.println("1. Opción 1");
-            System.out.println("2. Opción 2");
-            System.out.println("3. Opción 3");
+            System.out.println("Bienvenido al menu:");
+            System.out.println("1. Opcion 1");
+            System.out.println("2. Opcion 2");
+            System.out.println("3. Opcion 3");
             System.out.println("4. Salir");
-            System.out.print("Seleccione una opción: ");
+            System.out.print("Seleccione una opcion: ");
 
             choice = scanner.nextInt();
 
