@@ -1,11 +1,54 @@
 package logico;
 
 import java.util.Scanner;
+import java.util.Arrays;
 
 public class main {
+	
+	public static class Grafo {
+        private int[][] matrizAdy;//Definimos la matriz
+        private int numVer;//Tu usaras esto en lo de djikra, creo
+	
+        
+        public Grafo(int numVer) {
+            this.numVer = numVer;
+            matrizAdy = new int[numVer][numVer];
+            for (int i = 0; i < numVer; i++) {
+                Arrays.fill(matrizAdy[i], Integer.MAX_VALUE);
+            }
+        }//Agregamos valores grandes a las aristas, para luego sustituir
+        
+     // Método para agregar una arista con peso
+        public void agregarArista(int origen, int destino, int peso) {
+            matrizAdy[origen][destino] = peso;
+            matrizAdy[destino][origen] = peso;
+        }//Debemos poner los 2 porque es no dirigido, si fuera dirigido, solo seria el de arriba
+        
+     // Método para obtener el peso de una arista entre dos vértices
+        public int obtenerPesoArista(int origen, int destino) {
+            return matrizAdy[origen][destino];
+        }
+	}
+	
 	public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         int choice;
+        Grafo grafo = new Grafo(9); // Creamos el grafo
+        
+        // Agregamos aristas al grafo y establecemos sus pesos
+        grafo.agregarArista(0, 1, 4);
+        grafo.agregarArista(0, 7, 8);
+        grafo.agregarArista(1, 2, 8);
+        grafo.agregarArista(1, 7, 11);
+        grafo.agregarArista(2, 3, 7);
+        grafo.agregarArista(2, 8, 2);
+        grafo.agregarArista(2, 5, 4);
+        grafo.agregarArista(3, 4, 9);
+        grafo.agregarArista(4, 5, 10);
+        grafo.agregarArista(5, 6, 2);
+        grafo.agregarArista(6, 7, 1);
+        grafo.agregarArista(6, 8, 6);
+        grafo.agregarArista(7, 8, 7);
 
         do {
             System.out.println("Bienvenido al menu:");
@@ -19,7 +62,7 @@ public class main {
 
             switch (choice) {
                 case 1:
-                    System.out.println("Seleccione la opcion 1");
+                	System.out.println("\nEl peso de la arista entre el vértice 0 y el vértice 1 es: " + grafo.obtenerPesoArista(0, 1));// Esto era para yo saber si el peso estaba bien
                     // Aquí puedes poner el código correspondiente a la opción 1
                     break;
                 case 2:
