@@ -7,11 +7,10 @@ public class Main {
 	
 	public static void main(String[] args) {
 		
-		AlgoritmoDijkstra dijkstra = new AlgoritmoDijkstra(); // Se crea una instancia de la clase donde se encuentra el algoritmo de dijkstra
-		
         Scanner scanner = new Scanner(System.in);
         int choice;
         Grafo grafo = new Grafo(9); // Creamos el grafo
+		AlgoritmoDijkstra dijkstra = new AlgoritmoDijkstra(grafo); // Se crea una instancia de la clase donde se encuentra el algoritmo de dijkstra
         
         // Agregamos aristas al grafo y establecemos sus pesos
         grafo.agregarArista(0, 1, 4);
@@ -48,7 +47,7 @@ public class Main {
                     System.out.println("Ingrese el origen y el destino separados por espacios:");
                     int origen = scanner.nextInt();
                     int destino = scanner.nextInt();
-                    ArrayList<Integer> camino = dijkstra.calcularCamino(grafo, origen, destino);
+                    ArrayList<Integer> camino = dijkstra.calcularCamino(origen, destino);
                     System.out.println("El camino desde " + origen + " hasta " + destino + " es: " + camino);
                     break;
                 case 3:
