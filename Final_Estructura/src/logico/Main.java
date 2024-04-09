@@ -51,8 +51,9 @@ public class Main {
                     System.out.println("El camino desde " + origen + " hasta " + destino + " es: " + camino);
                     break;
                 case 3:
-                    System.out.println("Seleccionó la opción 3");
-                    // Aquí puedes poner el código correspondiente a la opción 3
+                    AlgoritmoPrim prim = new AlgoritmoPrim(grafo);
+                    ArrayList<Arista> arbolPrim = prim.generarArbolExpansionMinima();
+                    System.out.println("Árbol de expansión mínima (Prim): " + arbolPrim);
                     break;
                 case 4:
                     System.out.println("Saliendo del menú...");
