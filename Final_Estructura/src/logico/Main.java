@@ -1,15 +1,16 @@
 package logico;
 
 import java.util.Scanner;
+import java.util.ArrayList;
 import java.util.Arrays;
 
-public class main {
-	
+public class Main {
+
 	public static class Grafo {
-        private int[][] matrizAdy;//Definimos la matriz
-        private int numVer;//Tu usaras esto en lo de djikra, creo
+        int[][] matrizAdy;//Definimos la matriz
+        int numVer;//Tu usaras esto en lo de djikra, creo
 	
-        
+      
         public Grafo(int numVer) {
             this.numVer = numVer;
             matrizAdy = new int[numVer][numVer];
@@ -31,6 +32,9 @@ public class main {
 	}
 	
 	public static void main(String[] args) {
+		
+		AlgoritmoDijkstra dijkstra = new AlgoritmoDijkstra(); // Se crea una instancia de la clase donde se encuentra el algoritmo de dijkstra
+		
         Scanner scanner = new Scanner(System.in);
         int choice;
         Grafo grafo = new Grafo(9); // Creamos el grafo
@@ -44,6 +48,7 @@ public class main {
         grafo.agregarArista(2, 8, 2);
         grafo.agregarArista(2, 5, 4);
         grafo.agregarArista(3, 4, 9);
+        grafo.agregarArista(3, 5, 14);
         grafo.agregarArista(4, 5, 10);
         grafo.agregarArista(5, 6, 2);
         grafo.agregarArista(6, 7, 1);
@@ -66,8 +71,11 @@ public class main {
                     // Aquí puedes poner el código correspondiente a la opción 1
                     break;
                 case 2:
-                    System.out.println("Seleccionó la opción 2");
-                    // Aquí puedes poner el código correspondiente a la opción 2
+                    System.out.println("Ingrese el origen y el destino separados por espacios:");
+                    int origen = scanner.nextInt();
+                    int destino = scanner.nextInt();
+                    ArrayList<Integer> camino = dijkstra.calcularCamino(grafo, origen, destino);
+                    System.out.println("El camino desde " + origen + " hasta " + destino + " es: " + camino);
                     break;
                 case 3:
                     System.out.println("Seleccionó la opción 3");
