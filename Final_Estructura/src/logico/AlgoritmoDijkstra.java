@@ -3,10 +3,8 @@ package logico;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-import logico.Main.Grafo;
-
 public class AlgoritmoDijkstra {
-    // Método para encontrar el camino más corto usando el algoritmo de Dijkstra
+    // Mï¿½todo para encontrar el camino mï¿½s corto usando el algoritmo de Dijkstra
     public ArrayList<Integer> calcularCamino(Grafo grafo, int origen, int destino) {
         int numVertices = grafo.numVer;
         int[] distancias = new int[numVertices];
@@ -15,7 +13,7 @@ public class AlgoritmoDijkstra {
 
         // Inicializar distancias y padre
         Arrays.fill(distancias, Integer.MAX_VALUE); //Valor maximo de un entero en Java
-        Arrays.fill(padre, -1); //Se llena de -1 indicando que no se ha encontrado un camino (aún).
+        Arrays.fill(padre, -1); //Se llena de -1 indicando que no se ha encontrado un camino (aï¿½n).
         distancias[origen] = 0;
 
         for (int count = 0; count < numVertices - 1; count++) {
@@ -47,7 +45,7 @@ public class AlgoritmoDijkstra {
         return caminoInvertido;
     }
 
-    // Método auxiliar para encontrar el vértice con la distancia mínima
+    // Mï¿½todo auxiliar para encontrar el vï¿½rtice con la distancia mï¿½nima
     private int obtenerVerticeMinimo(int[] distancias, boolean[] visitado) {
         int minDistancia = Integer.MAX_VALUE;
         int minVertice = -1;

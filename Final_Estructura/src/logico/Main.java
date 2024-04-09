@@ -2,34 +2,8 @@ package logico;
 
 import java.util.Scanner;
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class Main {
-
-	public static class Grafo {
-        int[][] matrizAdy;//Definimos la matriz
-        int numVer;//Tu usaras esto en lo de djikra, creo
-	
-      
-        public Grafo(int numVer) {
-            this.numVer = numVer;
-            matrizAdy = new int[numVer][numVer];
-            for (int i = 0; i < numVer; i++) {
-                Arrays.fill(matrizAdy[i], Integer.MAX_VALUE);
-            }
-        }//Agregamos valores grandes a las aristas, para luego sustituir
-        
-     // Método para agregar una arista con peso
-        public void agregarArista(int origen, int destino, int peso) {
-            matrizAdy[origen][destino] = peso;
-            matrizAdy[destino][origen] = peso;
-        }//Debemos poner los 2 porque es no dirigido, si fuera dirigido, solo seria el de arriba
-        
-     // Método para obtener el peso de una arista entre dos vértices
-        public int obtenerPesoArista(int origen, int destino) {
-            return matrizAdy[origen][destino];
-        }
-	}
 	
 	public static void main(String[] args) {
 		
