@@ -33,15 +33,16 @@ public class Main {
             System.out.println("1. Opcion 1");
             System.out.println("2. Opcion 2");
             System.out.println("3. Opcion 3");
-            System.out.println("4. Salir");
+            System.out.println("4. Opcion 4");
+            System.out.println("5. Salir");
             System.out.print("Seleccione una opcion: ");
 
             choice = scanner.nextInt();
 
             switch (choice) {
                 case 1:
-                	System.out.println("\nEl peso de la arista entre el vértice 0 y el vértice 1 es: " + grafo.obtenerPesoArista(0, 1));// Esto era para yo saber si el peso estaba bien
-                    // Aquí puedes poner el código correspondiente a la opción 1
+                	System.out.println("\nEl peso de la arista entre el vÃ©rtice 0 y el vÃ©rtice 1 es: " + grafo.obtenerPesoArista(0, 1));// Esto era para yo saber si el peso estaba bien
+                    // AquÃ­ puedes poner el cÃ³digo correspondiente a la opciÃ³n 1
                     break;
                 case 2:
                     System.out.println("Ingrese el origen y el destino separados por espacios:");
@@ -53,15 +54,20 @@ public class Main {
                 case 3:
                     AlgoritmoPrim prim = new AlgoritmoPrim(grafo);
                     ArrayList<Arista> arbolPrim = prim.generarArbolExpansionMinima();
-                    System.out.println("Árbol de expansión mínima (Prim): " + arbolPrim);
+                    System.out.println("Ã�rbol de expansiÃ³n mÃ­nima (Prim): " + arbolPrim);
                     break;
                 case 4:
-                    System.out.println("Saliendo del menú...");
+                    AlgoritmoKruskal kruskal = new AlgoritmoKruskal(grafo);
+                    ArrayList<Arista> arbolKruskal = kruskal.generarArbolExpansionMinima();
+                    System.out.println("arbol de expansion minima (Kruskal): " + arbolKruskal);
+                    break;
+                case 5:
+                    System.out.println("Saliendo del menu...");
                     break;
                 default:
-                    System.out.println("Opción no válida. Por favor, seleccione una opción válida.");
+                    System.out.println("OpciÃ³n no vÃ¡lida. Por favor, seleccione una opciÃ³n vÃ¡lida.");
             }
-        } while (choice != 4);
+        } while (choice != 5);
 
         scanner.close();
     }
