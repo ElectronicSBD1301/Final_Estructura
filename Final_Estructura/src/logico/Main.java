@@ -1,6 +1,7 @@
 package logico;
 
 import java.util.Scanner;
+
 import java.util.ArrayList;
 
 public class Main {
@@ -34,7 +35,9 @@ public class Main {
             System.out.println("2. Opcion 2");
             System.out.println("3. Opcion 3");
             System.out.println("4. Opcion 4");
-            System.out.println("5. Salir");
+            System.out.println("5. Opcion 5");
+            System.out.println("6. Opcion 6");
+            System.out.println("7. Salir");
             System.out.print("Seleccione una opcion: ");
 
             choice = scanner.nextInt();
@@ -62,12 +65,31 @@ public class Main {
                     System.out.println("arbol de expansion minima (Kruskal): " + arbolKruskal);
                     break;
                 case 5:
-                    System.out.println("Saliendo del menu...");
+                    AlgoritmoFloydWarshall floydWarshall = new AlgoritmoFloydWarshall(grafo.numVer);
+                    floydWarshall.inicializarDistancias(grafo);
+                    floydWarshall.ejecutarFloydWarshall();
+                    floydWarshall.imprimirMatrizDistancias();
+                    break;
+                case 6:
+                	PlanificadorRutas planificador = new PlanificadorRutas(grafo);
+                    System.out.println("Ingrese el origen y el destino separados por espacios:");
+                    origen = scanner.nextInt();
+                    destino = scanner.nextInt();
+                    scanner.nextLine(); // Limpiar el buffer del scanner
+                    System.out.println("¿Prefiere minimizar el tiempo o la distancia? (tiempo/distancia)");
+                    String preferencia = scanner.nextLine().trim();
+                    ArrayList<Integer> rutaOptima = planificador.planificarRutaOptima(origen, destino, preferencia);
+                    System.out.println("La ruta óptima por " + preferencia + " desde " + origen + " hasta " + destino + " es: " + rutaOptima);
+                    break;
+
+                case 7:
+                    System.out.println("¡Hasta luego!");
+                    System.exit(0);
                     break;
                 default:
-                    System.out.println("OpciÃ³n no vÃ¡lida. Por favor, seleccione una opciÃ³n vÃ¡lida.");
+                    System.out.println("Opción no válida. Por favor, seleccione una opción válida.");
             }
-        } while (choice != 5);
+        } while (choice != 7);
 
         scanner.close();
     }
