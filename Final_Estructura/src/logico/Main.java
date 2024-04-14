@@ -11,8 +11,7 @@ public class Main {
 		Scanner scanner = new Scanner(System.in);
 		int choice;
 		Grafo grafo = new Grafo(9); // Creamos el grafo
-		AlgoritmoDijkstra dijkstra = new AlgoritmoDijkstra(grafo); // Se crea una instancia de la clase donde se
-																	// encuentra el algoritmo de dijkstra
+		AlgoritmoDijkstra dijkstra = new AlgoritmoDijkstra(grafo); // Se crea una instancia de la clase donde se encuentra el algoritmo de dijkstra
 
 		// Agregamos aristas al grafo y establecemos sus pesos
 		grafo.agregarArista(0, 1, 4);
@@ -32,12 +31,12 @@ public class Main {
 
 		do {
 			System.out.println("Bienvenido al menu:");
-			System.out.println("1. Opcion 1");
-			System.out.println("2. Opcion 2");
-			System.out.println("3. Opcion 3");
-			System.out.println("4. Opcion 4");
-			System.out.println("5. Opcion 5");
-			System.out.println("6. Opcion 6");
+			System.out.println("1. Modificar Grafo");
+			System.out.println("2. Algoritmo Dijkstra");
+			System.out.println("3. Algoritmo Prim");
+			System.out.println("4. Algoritmo Kruskal");
+			System.out.println("5. Algoritmo FloydWarshall");
+			System.out.println("6. Planificador de rutas");
 			System.out.println("7. Salir");
 			System.out.print("Seleccione una opcion: ");
 

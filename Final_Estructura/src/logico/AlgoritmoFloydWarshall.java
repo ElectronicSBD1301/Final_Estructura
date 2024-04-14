@@ -31,13 +31,13 @@ public class AlgoritmoFloydWarshall {
         for (int k = 0; k < numVertices; k++) {
             for (int i = 0; i < numVertices; i++) {
                 for (int j = 0; j < numVertices; j++) {
-                    // Comprobamos si hay una conexión directa entre i y j o si podemos llegar de i a j a través de k
+                    // Comprobamos si hay una conexión directa o si podemos llegar través de k
                     if (distancias[i][k] != Integer.MAX_VALUE && distancias[k][j] != Integer.MAX_VALUE) {
                         // Calculamos la distancia a través de k y comparamos con la distancia actual de i a j
                         int distancia_a_traves_k = distancias[i][k] + distancias[k][j];
                         if (distancia_a_traves_k < distancias[i][j]) {
                             distancias[i][j] = distancia_a_traves_k;
-                            predecesores[i][j] = predecesores[i][k]; // Actualizamos el predecesor
+                            predecesores[i][j] = predecesores[i][k];
                         }
                     }
                 }

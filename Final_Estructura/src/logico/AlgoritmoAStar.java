@@ -13,7 +13,6 @@ public class AlgoritmoAStar {
     }
 
     public ArrayList<Integer> calcularCamino(int origen, int destino) {
-        // Estructuras de datos para el algoritmo
         PriorityQueue<Nodo> colaPrioridad = new PriorityQueue<>(Comparator.comparingInt(n -> n.f));
         HashSet<Integer> visitados = new HashSet<>();
         int[] costoDesdeOrigen = new int[grafo.numVer];
@@ -27,17 +26,13 @@ public class AlgoritmoAStar {
 
         // Agregar el nodo de origen a la cola de prioridad
         colaPrioridad.add(new Nodo(origen, 0, 0));
-
-        // Inicializar el costo desde el origen al nodo origen como 0
         costoDesdeOrigen[origen] = 0;
 
         // Ejecutar el algoritmo A*
         while (!colaPrioridad.isEmpty()) {
             Nodo actual = colaPrioridad.poll();
 
-            // Verificar si el nodo actual es el destino
             if (actual.indice == destino) {
-                // Reconstruir el camino óptimo
                 return reconstruirCamino(destino, padres);
             }
 
@@ -46,7 +41,7 @@ public class AlgoritmoAStar {
 
             // Explorar los vecinos del nodo actual
             for (int vecino : grafo.obtenerVecinos(actual.indice)) {
-                // Calcular el costo tentativo desde el origen al vecino
+                // Calcular el costo tentativo
                 int costoTentativo = actual.g + grafo.obtenerPesoArista(actual.indice, vecino);
 
                 // Verificar si el vecino ya fue visitado o el costo tentativo es mayor que el costo conocido
@@ -57,17 +52,10 @@ public class AlgoritmoAStar {
                 // Actualizar el costo y el padre del vecino
                 costoDesdeOrigen[vecino] = costoTentativo;
                 padres[vecino] = actual.indice;
-
-                // Calcular la función de evaluación (f) del vecino
-                int f = costoTentativo + calcularHeuristica(vecino, destino);
-
-                // Agregar el vecino a la cola de prioridad
-                colaPrioridad.add(new Nodo(vecino, costoTentativo, f));
+                colaPrioridad.add(new Nodo(vecino, costoTentativo, costoTentativo));
             }
         }
-
-        // No se encontró camino
-        return null;
+        return null;//Solo si no encuentra un camino
     }
 
     // Método para reconstruir el camino óptimo desde el nodo destino al origen
@@ -82,18 +70,10 @@ public class AlgoritmoAStar {
         return camino;
     }
 
-    // Método para calcular la heurística (distancia estimada al destino)
-    private int calcularHeuristica(int nodo, int destino) {
-        // Implementa aquí una heurística adecuada
-        // En este ejemplo, simplemente retornamos 0
-        return 0;
-    }
-
-    // Clase Nodo para almacenar información del nodo en la cola de prioridad
     private static class Nodo {
-        int indice; // Índice del nodo
+        int indice;
         int g; // Costo real desde el origen al nodo
-        int f; // Función de evaluación (f = g + h)
+        int f; // Función de evaluación
 
         public Nodo(int indice, int g, int f) {
             this.indice = indice;

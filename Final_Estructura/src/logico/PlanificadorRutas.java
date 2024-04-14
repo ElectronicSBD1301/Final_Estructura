@@ -9,7 +9,8 @@ public class PlanificadorRutas {
     public PlanificadorRutas(Grafo grafo) {
         this.grafo = grafo;
     }
-
+    
+    // Luego de establecer el origen y destino, pedimos el metodo que prefiere el usuario
     public ArrayList<Integer> planificarRutaOptima(int origen, int destino, String preferencia) {
         if (preferencia.equalsIgnoreCase("distancia")) {
             return calcularRutaMinimaPorDistancia(origen, destino);
@@ -20,15 +21,15 @@ public class PlanificadorRutas {
         }
     }
 
+    //Para distancia utilizamos el algoritmo de Dijkstra
     private ArrayList<Integer> calcularRutaMinimaPorDistancia(int origen, int destino) {
         AlgoritmoDijkstra dijkstra = new AlgoritmoDijkstra(grafo);
         return dijkstra.calcularCamino(origen, destino);
     }
 
+    //Para tiempo usamos la variante de Dijkstra que es A*, que busca la optimizacion
     private ArrayList<Integer> calcularRutaMinimaPorTiempo(int origen, int destino) {
-        // Crear una instancia del algoritmo A*
         AlgoritmoAStar aStar = new AlgoritmoAStar(grafo);
-
         // Calcular la ruta mínima por tiempo utilizando A*
         return aStar.calcularCamino(origen, destino);
     }

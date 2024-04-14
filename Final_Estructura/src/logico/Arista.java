@@ -35,7 +35,6 @@ public class Arista {
         this.peso = peso;
     }
 
-    @Override
     public String toString() {
         return "(" + origen + " -> " + destino + ", Peso: " + peso + ")";
     }
