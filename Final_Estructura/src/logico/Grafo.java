@@ -1,6 +1,7 @@
 package logico;
 
 import java.util.Arrays;
+import java.util.ArrayList;
 
 public class Grafo {
     int[][] matrizAdy;
@@ -21,5 +22,16 @@ public class Grafo {
     
     public int obtenerPesoArista(int origen, int destino) {
         return matrizAdy[origen][destino];
+    }
+    
+ // Método para obtener los vecinos de un vértice dado
+    public ArrayList<Integer> obtenerVecinos(int nodo) {
+        ArrayList<Integer> vecinos = new ArrayList<>();
+        for (int i = 0; i < numVer; i++) {
+            if (matrizAdy[nodo][i] != Integer.MAX_VALUE) {
+                vecinos.add(i);
+            }
+        }
+        return vecinos;
     }
 }

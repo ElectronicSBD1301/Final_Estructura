@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 import java.util.ArrayList;
 
+
 public class Main {
 	
 	public static void main(String[] args) {
@@ -71,17 +72,26 @@ public class Main {
                     floydWarshall.imprimirMatrizDistancias();
                     break;
                 case 6:
-                	PlanificadorRutas planificador = new PlanificadorRutas(grafo);
+                    PlanificadorRutas planificador = new PlanificadorRutas(grafo);
                     System.out.println("Ingrese el origen y el destino separados por espacios:");
                     origen = scanner.nextInt();
                     destino = scanner.nextInt();
                     scanner.nextLine(); // Limpiar el buffer del scanner
                     System.out.println("¿Prefiere minimizar el tiempo o la distancia? (tiempo/distancia)");
                     String preferencia = scanner.nextLine().trim();
-                    ArrayList<Integer> rutaOptima = planificador.planificarRutaOptima(origen, destino, preferencia);
-                    System.out.println("La ruta óptima por " + preferencia + " desde " + origen + " hasta " + destino + " es: " + rutaOptima);
+                    ArrayList<Integer> rutaOptima;
+                    if (preferencia.equalsIgnoreCase("distancia") || preferencia.equalsIgnoreCase("tiempo")) {
+                        rutaOptima = planificador.planificarRutaOptima(origen, destino, preferencia);
+                        if (rutaOptima != null) {
+                            String tipoCalculo = preferencia.equalsIgnoreCase("distancia") ? "distancia" : "tiempo";
+                            System.out.println("La ruta óptima por " + tipoCalculo + " desde " + origen + " hasta " + destino + " es: " + rutaOptima);
+                        } else {
+                            System.out.println("No hay ruta disponible entre " + origen + " y " + destino + ".");
+                        }
+                    } else {
+                        System.out.println("Opción no válida. Por favor, seleccione 'tiempo' o 'distancia'.");
+                    }
                     break;
-
                 case 7:
                     System.out.println("¡Hasta luego!");
                     System.exit(0);
