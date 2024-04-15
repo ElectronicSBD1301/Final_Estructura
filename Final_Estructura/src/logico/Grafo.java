@@ -81,7 +81,7 @@ public class Grafo {
 			numVer--;
 			matrizAdy = nuevaMatrizAdy;
 		} else {
-			System.out.println("El vértice a eliminar no es válido.");
+			System.out.println("El vï¿½rtice a eliminar no es vï¿½lido.");
 		}
 	}
 
@@ -98,5 +98,20 @@ public class Grafo {
 			System.out.println();
 		}
 	}
+	
+	// MÃ©todo para obtener la distancia entre dos nodos basada en el nÃºmero de aristas
+    public int obtenerDistanciaEuclidiana(int nodo1, int nodo2) {
+        // Para simplificar, asumimos que cada arista cuenta como una unidad de distancia
+        // y utilizamos el algoritmo de Dijkstra para calcular la distancia entre los nodos
+        AlgoritmoDijkstra dijkstra = new AlgoritmoDijkstra(this);
+        ArrayList<Integer> camino = dijkstra.calcularCamino(nodo1, nodo2);
+        if (camino != null) {
+            // La distancia es el nÃºmero de aristas en el camino menos uno
+            return camino.size() - 1;
+        } else {
+            // Si no hay camino entre los nodos, retornamos un valor grande
+            return Integer.MAX_VALUE;
+        }
+    }
 
 }

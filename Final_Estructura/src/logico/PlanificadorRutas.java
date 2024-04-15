@@ -21,10 +21,10 @@ public class PlanificadorRutas {
         }
     }
 
-    //Para distancia utilizamos el algoritmo de Dijkstra
+    //Para distancia utilizamos el algoritmo de A*, mas eficiente que Djisktra
     private ArrayList<Integer> calcularRutaMinimaPorDistancia(int origen, int destino) {
-        AlgoritmoDijkstra dijkstra = new AlgoritmoDijkstra(grafo);
-        return dijkstra.calcularCamino(origen, destino);
+    	AlgoritmoAStar aStar = new AlgoritmoAStar(grafo);
+        return aStar.calcularCamino(origen, destino);
     }
 
     //Para tiempo usamos la variante de Dijkstra que es A*, que busca la optimizacion
