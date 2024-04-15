@@ -31,7 +31,7 @@ public class Main {
 
 		do {
 			System.out.println("Bienvenido al menu:");
-			System.out.println("1. Modificar Grafo");
+			System.out.println("1. Menú Grafo");
 			System.out.println("2. Algoritmo Dijkstra");
 			System.out.println("3. Algoritmo Prim");
 			System.out.println("4. Algoritmo Kruskal");
