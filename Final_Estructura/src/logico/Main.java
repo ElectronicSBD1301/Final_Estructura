@@ -14,20 +14,20 @@ public class Main {
 		AlgoritmoDijkstra dijkstra = new AlgoritmoDijkstra(grafo); // Se crea una instancia de la clase donde se encuentra el algoritmo de dijkstra
 
 		// Agregamos aristas al grafo y establecemos sus pesos
-		grafo.agregarArista(0, 1, 4);
-		grafo.agregarArista(0, 7, 8);
-		grafo.agregarArista(1, 2, 8);
-		grafo.agregarArista(1, 7, 11);
-		grafo.agregarArista(2, 3, 7);
-		grafo.agregarArista(2, 8, 2);
-		grafo.agregarArista(2, 5, 4);
-		grafo.agregarArista(3, 4, 9);
-		grafo.agregarArista(3, 5, 14);
-		grafo.agregarArista(4, 5, 10);
-		grafo.agregarArista(5, 6, 2);
-		grafo.agregarArista(6, 7, 1);
-		grafo.agregarArista(6, 8, 6);
-		grafo.agregarArista(7, 8, 7);
+		grafo.agregarArista(0, 1, 4, 3);
+		grafo.agregarArista(0, 7, 8, 20);
+		grafo.agregarArista(1, 2, 8, 9);
+		grafo.agregarArista(1, 7, 11, 4);
+		grafo.agregarArista(2, 3, 7, 8);
+		grafo.agregarArista(2, 8, 2, 14);
+		grafo.agregarArista(2, 5, 4, 5);
+		grafo.agregarArista(3, 4, 9, 17);
+		grafo.agregarArista(3, 5, 14, 13);
+		grafo.agregarArista(4, 5, 10, 2);
+		grafo.agregarArista(5, 6, 2, 16);
+		grafo.agregarArista(6, 7, 1, 18);
+		grafo.agregarArista(6, 8, 6, 19);
+		grafo.agregarArista(7, 8, 7, 10);
 
 		do {
 			System.out.println("Bienvenido al menu:");
@@ -58,19 +58,21 @@ public class Main {
 
 					switch (grafoChoice) {
 					case 1:
-						System.out.println("Ingrese el origen, destino y su peso separados por espacios:");
+						System.out.println("Ingrese el origen, destino, peso y el tiempo separados por espacios:");
 						int nuevoOrigen = scanner.nextInt();
 						int nuevoDestino = scanner.nextInt();
 						int pesoArista = scanner.nextInt();
-						grafo.agregarArista(nuevoOrigen, nuevoDestino, pesoArista);
+						int tiempoArista = scanner.nextInt();
+						grafo.agregarArista(nuevoOrigen, nuevoDestino, pesoArista, tiempoArista);
 						System.out.println("Vértice agregado con éxito.");
 						break;
 					case 2:
-						System.out.println("Ingrese el origen, destino y el nuevo peso separados por espacios:");
+						System.out.println("Ingrese el origen, destino, peso y el nuevo tiempo separados por espacios:");
 						int origenArista = scanner.nextInt();
 						int destinoArista = scanner.nextInt();
 						int nuevoPeso = scanner.nextInt();
-						grafo.editarPesoArista(origenArista, destinoArista, nuevoPeso);
+						int nuevoTiempo = scanner.nextInt();
+;						grafo.editarPesoArista(origenArista, destinoArista, nuevoPeso, nuevoTiempo);
 						System.out.println("Peso de arista editado con éxito.");
 						break;
 					case 3:
@@ -98,12 +100,12 @@ public class Main {
 				break;
 			case 3:
 				AlgoritmoPrim prim = new AlgoritmoPrim(grafo);
-				ArrayList<Arista> arbolPrim = prim.generarArbolExpansionMinima();
+				ArrayList<AristaAlgoritmos> arbolPrim = prim.generarArbolExpansionMinima();
 				System.out.println("Ã�rbol de expansiÃ³n mÃ­nima (Prim): " + arbolPrim);
 				break;
 			case 4:
 				AlgoritmoKruskal kruskal = new AlgoritmoKruskal(grafo);
-				ArrayList<Arista> arbolKruskal = kruskal.generarArbolExpansionMinima();
+				ArrayList<AristaAlgoritmos> arbolKruskal = kruskal.generarArbolExpansionMinima();
 				System.out.println("arbol de expansion minima (Kruskal): " + arbolKruskal);
 				break;
 			case 5:

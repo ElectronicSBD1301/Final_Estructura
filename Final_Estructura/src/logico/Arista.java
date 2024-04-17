@@ -1,41 +1,27 @@
 package logico;
 
 public class Arista {
-    private int origen;
-    private int destino;
-    private int peso;
+	private int peso;
+	private int tiempo;
 
-    public Arista(int origen, int destino, int peso) {
-        this.origen = origen;
-        this.destino = destino;
-        this.peso = peso;
-    }
+	public Arista(int peso, int tiempo) {
+		this.peso = peso;
+		this.tiempo = tiempo;
+	}
 
-    public int getOrigen() {
-        return origen;
-    }
+	public int getPeso() {
+		return peso;
+	}
 
-    public void setOrigen(int origen) {
-        this.origen = origen;
-    }
+	public int getTiempo() {
+		return tiempo;
+	}
 
-    public int getDestino() {
-        return destino;
-    }
+	public void setPeso(int peso) {
+		this.peso = peso;
+	}
 
-    public void setDestino(int destino) {
-        this.destino = destino;
-    }
-
-    public int getPeso() {
-        return peso;
-    }
-
-    public void setPeso(int peso) {
-        this.peso = peso;
-    }
-
-    public String toString() {
-        return "(" + origen + " -> " + destino + ", Peso: " + peso + ")";
-    }
+	public void setTiempo(int tiempo) {
+		this.tiempo = tiempo;
+	}
 }

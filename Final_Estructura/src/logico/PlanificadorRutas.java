@@ -15,7 +15,7 @@ public class PlanificadorRutas {
         if (preferencia.equalsIgnoreCase("distancia")) {
             return calcularRutaMinimaPorDistancia(origen, destino);
         } else if (preferencia.equalsIgnoreCase("tiempo")) {
-            return calcularRutaMinimaPorTiempo(origen, destino);
+            return planificarRutaOptimaTiempo(origen, destino);
         } else {
             throw new IllegalArgumentException("La preferencia debe ser 'distancia' o 'tiempo'.");
         }
@@ -27,10 +27,8 @@ public class PlanificadorRutas {
         return aStar.calcularCamino(origen, destino);
     }
 
-    //Para tiempo usamos la variante de Dijkstra que es A*, que busca la optimizacion
-    private ArrayList<Integer> calcularRutaMinimaPorTiempo(int origen, int destino) {
-        AlgoritmoAStar aStar = new AlgoritmoAStar(grafo);
-        // Calcular la ruta mínima por tiempo utilizando A*
-        return aStar.calcularCamino(origen, destino);
-    }
+	private ArrayList<Integer> planificarRutaOptimaTiempo(int origen, int destino) {
+		AlgoritmoDijkstraTiempo dijkstra = new AlgoritmoDijkstraTiempo(grafo);
+	    return dijkstra.calcularCaminoMinTiempo(origen, destino);
+	}
 }

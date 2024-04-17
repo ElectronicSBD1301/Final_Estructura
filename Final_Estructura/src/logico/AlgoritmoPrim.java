@@ -12,13 +12,13 @@ public class AlgoritmoPrim {
         this.numVertices = grafo.numVer;
     }
 
-    public ArrayList<Arista> generarArbolExpansionMinima() {
+    public ArrayList<AristaAlgoritmos> generarArbolExpansionMinima() {
         boolean[] visitado = new boolean[numVertices];
-        ArrayList<Arista> arbolExpansion = new ArrayList<>();
+        ArrayList<AristaAlgoritmos> arbolExpansion = new ArrayList<>();
         visitado[0] = true; // Empezamos desde el primer nodo
 
         while (arbolExpansion.size() < numVertices - 1) {
-            Arista aristaMinima = null;
+        	AristaAlgoritmos aristaMinima = null;
             int pesoMinimo = Integer.MAX_VALUE;
 
             for (int i = 0; i < numVertices; i++) {
@@ -27,7 +27,7 @@ public class AlgoritmoPrim {
                         int peso = grafo.obtenerPesoArista(i, j);
                         if (!visitado[j] && peso < pesoMinimo && peso != 0) {
                             pesoMinimo = peso;
-                            aristaMinima = new Arista(i, j, peso);
+                            aristaMinima = new AristaAlgoritmos(i, j, peso);
                         }
                     }
                 }
