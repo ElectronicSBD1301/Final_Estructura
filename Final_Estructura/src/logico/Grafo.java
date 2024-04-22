@@ -250,5 +250,3 @@ public class Grafo {
         }
     }
 }
-
-//arbol prim y kruskal
