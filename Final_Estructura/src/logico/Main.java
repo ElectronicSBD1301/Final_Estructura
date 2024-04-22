@@ -71,7 +71,6 @@ public class Main {
 						int pesoArista = scanner.nextInt();
 						int tiempoArista = scanner.nextInt();
 						grafo.agregarArista(nuevoOrigen, nuevoDestino, pesoArista, tiempoArista);
-						System.out.println("Vértice agregado con éxito.");
 						break;
 					case 2:
 						System.out.println("Ingrese el origen, destino, peso y el nuevo tiempo separados por espacios:");
@@ -79,14 +78,12 @@ public class Main {
 						int destinoArista = scanner.nextInt();
 						int nuevoPeso = scanner.nextInt();
 						int nuevoTiempo = scanner.nextInt();
-;						grafo.editarPesoArista(origenArista, destinoArista, nuevoPeso, nuevoTiempo);
-						System.out.println("Peso de arista editado con éxito.");
+						grafo.editarPesoArista(origenArista, destinoArista, nuevoPeso, nuevoTiempo);
 						break;
 					case 3:
 						System.out.println("Ingrese el vértice a eliminar:");
 						int verticeEliminar = scanner.nextInt();
 						grafo.eliminarVertice(verticeEliminar);
-						System.out.println("Vértice eliminado con éxito.");
 						break;
 					case 4:
 						grafo.imprimirMatrizAdyacencia();
@@ -127,20 +124,20 @@ public class Main {
 				origen = scanner.nextInt();
 				destino = scanner.nextInt();
 				scanner.nextLine(); // Limpiar el buffer del scanner
-				System.out.println("¿Prefiere minimizar el tiempo o la distancia? (tiempo/distancia)");
+				System.out.println("¿Prefiere minimizar el tiempo (t) o la distancia (d)? (t/d)");
 				String preferencia = scanner.nextLine().trim();
 				ArrayList<Integer> rutaOptima;
-				if (preferencia.equalsIgnoreCase("distancia") || preferencia.equalsIgnoreCase("tiempo")) {
-					rutaOptima = planificador.planificarRutaOptima(origen, destino, preferencia);
-					if (rutaOptima != null) {
-						String tipoCalculo = preferencia.equalsIgnoreCase("distancia") ? "distancia" : "tiempo";
-						System.out.println("La ruta óptima por " + tipoCalculo + " desde " + origen + " hasta "
-								+ destino + " es: " + rutaOptima);
-					} else {
-						System.out.println("No hay ruta disponible entre " + origen + " y " + destino + ".");
-					}
+				if (preferencia.equalsIgnoreCase("d") || preferencia.equalsIgnoreCase("t")) {
+				    String tipoCalculo = preferencia.equalsIgnoreCase("d") ? "distancia" : "tiempo";
+				    rutaOptima = planificador.planificarRutaOptima(origen, destino, preferencia);
+				    if (rutaOptima != null) {
+				        System.out.println("La ruta óptima por " + tipoCalculo + " desde " + origen + " hasta "
+				                + destino + " es: " + rutaOptima);
+				    } else {
+				        System.out.println("No hay ruta disponible entre " + origen + " y " + destino + ".");
+				    }
 				} else {
-					System.out.println("Opción no válida. Por favor, seleccione 'tiempo' o 'distancia'.");
+				    System.out.println("Opción no válida. Por favor, seleccione 't' o 'd'.");
 				}
 				break;
 			case 7:

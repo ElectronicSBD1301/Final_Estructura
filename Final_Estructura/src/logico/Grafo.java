@@ -33,6 +33,17 @@ public class Grafo {
      * Retorno: Ninguno.
      */
     public void agregarArista(int origen, int destino, int peso, int tiempo) {
+    	
+        if (origen < 0 || destino < 0 || peso < 0 || tiempo < 0) {
+            System.out.println("Error: Los valores de origen, destino, peso y tiempo deben ser números enteros no negativos.");
+            return;
+        }
+
+        if ((origen >= 0 && destino < 0) || (origen < 0 && destino >= 0)) {
+            System.out.println("Error: Origen y destino deben tener ambos valores positivos o ambos valores negativos.");
+            return;
+        }
+    	
         if (origen >= numVer || destino >= numVer) {
             int nuevoTam = Math.max(origen, destino) + 1;
             Arista[][] nuevaMatrizAdy = new Arista[nuevoTam][nuevoTam];
@@ -49,6 +60,8 @@ public class Grafo {
 
         matrizAdy[origen][destino] = new Arista(peso, tiempo);
         matrizAdy[destino][origen] = new Arista(peso, tiempo);
+        
+        System.out.println("Vértice agregado con éxito.");
     }
 
     /**
@@ -96,11 +109,23 @@ public class Grafo {
      * Retorno: Ninguno.
      */
     public void editarPesoArista(int origen, int destino, int nuevoPeso, int nuevoTiempo) {
-        if (matrizAdy[origen][destino] != null) {
+        if (origen < 0 || destino < 0 || nuevoPeso < 0 || nuevoTiempo < 0) {
+            System.out.println("Error: Los valores de origen, destino, nuevo peso y nuevo tiempo deben ser números enteros no negativos.");
+            return;
+        }
+
+        if ((origen >= 0 && destino < 0) || (origen < 0 && destino >= 0)) {
+            System.out.println("Error: Origen y destino deben tener ambos valores positivos o ambos valores negativos.");
+            return;
+        }
+    	
+    	if (matrizAdy[origen][destino] != null) {
             matrizAdy[origen][destino].setPeso(nuevoPeso);
             matrizAdy[origen][destino].setTiempo(nuevoTiempo);
             matrizAdy[destino][origen].setPeso(nuevoPeso);
             matrizAdy[destino][origen].setTiempo(nuevoTiempo);
+            
+            System.out.println("Peso de arista editado con éxito.");
         } else {
             // Esto indica que no existe la arista
             System.out.println("No existe la arista especificada.");
@@ -115,6 +140,11 @@ public class Grafo {
      * Retorno: Ninguno.
      */
     public void eliminarVertice(int vertice) {
+        if (vertice < 0) {
+            System.out.println("Error: El vértice a eliminar debe ser un número entero no negativo.");
+            return;
+        }
+    	
         if (vertice >= 0 && vertice < numVer) {
             Arista[][] nuevaMatrizAdy = new Arista[numVer - 1][numVer - 1];
 
@@ -130,6 +160,8 @@ public class Grafo {
 
             numVer--;
             matrizAdy = nuevaMatrizAdy;
+            
+            System.out.println("Vértice eliminado con éxito.");
         } else {
             System.out.println("El vértice a eliminar no es válido.");
         }

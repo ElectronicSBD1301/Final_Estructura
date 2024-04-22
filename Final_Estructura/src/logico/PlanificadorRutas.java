@@ -23,12 +23,12 @@ public class PlanificadorRutas {
      * @throws IllegalArgumentException si la preferencia no es 'distancia' o 'tiempo'.
      */
     public ArrayList<Integer> planificarRutaOptima(int origen, int destino, String preferencia) {
-        if (preferencia.equalsIgnoreCase("distancia")) {
+        if (preferencia.equalsIgnoreCase("d")) {
             return calcularRutaMinimaPorDistancia(origen, destino);
-        } else if (preferencia.equalsIgnoreCase("tiempo")) {
+        } else if (preferencia.equalsIgnoreCase("t")) {
             return planificarRutaOptimaTiempo(origen, destino);
         } else {
-            throw new IllegalArgumentException("La preferencia debe ser 'distancia' o 'tiempo'.");
+            throw new IllegalArgumentException("La preferencia debe ser 'd' (distancia) o 't' (tiempo).");
         }
     }
 
