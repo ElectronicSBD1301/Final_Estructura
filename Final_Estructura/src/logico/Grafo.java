@@ -33,7 +33,6 @@ public class Grafo {
      * Retorno: Ninguno.
      */
     public void agregarArista(int origen, int destino, int peso, int tiempo) {
-    	
         if (origen < 0 || destino < 0 || peso < 0 || tiempo < 0) {
             System.out.println("Error: Los valores de origen, destino, peso y tiempo deben ser números enteros no negativos.");
             return;
@@ -43,7 +42,12 @@ public class Grafo {
             System.out.println("Error: Origen y destino deben tener ambos valores positivos o ambos valores negativos.");
             return;
         }
-    	
+
+        if (destino > (numVer - 1) + 1) {
+            System.out.println("Error: El vértice destino no puede ser mayor que numVertices + 1.");
+            return;
+        }
+
         if (origen >= numVer || destino >= numVer) {
             int nuevoTam = Math.max(origen, destino) + 1;
             Arista[][] nuevaMatrizAdy = new Arista[nuevoTam][nuevoTam];
@@ -60,9 +64,10 @@ public class Grafo {
 
         matrizAdy[origen][destino] = new Arista(peso, tiempo);
         matrizAdy[destino][origen] = new Arista(peso, tiempo);
-        
-        System.out.println("Vértice agregado con éxito.");
+
+        System.out.println("Arista agregada con éxito.");
     }
+
 
     /**
      * Función: obtenerPesoArista
@@ -114,23 +119,24 @@ public class Grafo {
             return;
         }
 
-        if ((origen >= 0 && destino < 0) || (origen < 0 && destino >= 0)) {
-            System.out.println("Error: Origen y destino deben tener ambos valores positivos o ambos valores negativos.");
+        if (origen >= numVer || destino >= numVer) {
+            System.out.println("Error: Origen y destino deben estar dentro del rango de vértices del grafo.");
             return;
         }
-    	
-    	if (matrizAdy[origen][destino] != null) {
+
+        if (matrizAdy[origen][destino] != null) {
             matrizAdy[origen][destino].setPeso(nuevoPeso);
             matrizAdy[origen][destino].setTiempo(nuevoTiempo);
             matrizAdy[destino][origen].setPeso(nuevoPeso);
             matrizAdy[destino][origen].setTiempo(nuevoTiempo);
-            
+
             System.out.println("Peso de arista editado con éxito.");
         } else {
             // Esto indica que no existe la arista
             System.out.println("No existe la arista especificada.");
         }
     }
+
 
     /**
      * Función: eliminarVertice
@@ -187,12 +193,40 @@ public class Grafo {
                 if (matrizAdy[i][j] != null) {
                     System.out.printf("%-4d", matrizAdy[i][j].getPeso());
                 } else {
-                    System.out.print("0   ");
+                    System.out.print("X   ");
                 }
             }
             System.out.println();
         }
     }
+    
+    /**
+     * Función: imprimirMatrizAdyacenciaTiempo
+     * Argumentos: Ninguno.
+     * Objetivo: Imprimir la matriz de adyacencia del grafo mostrando únicamente el tiempo de las aristas.
+     * Retorno: Ninguno.
+     */
+    public void imprimirMatrizAdyacenciaTiempo() {
+        System.out.println("Matriz de Adyacencia (Tiempos):");
+        System.out.print("    ");
+        for (int i = 0; i < numVer; i++) {
+            System.out.printf("%-4d", i);
+        }
+        System.out.println();
+
+        for (int i = 0; i < numVer; i++) {
+            System.out.printf("%-4d", i);
+            for (int j = 0; j < numVer; j++) {
+                if (matrizAdy[i][j] != null) {
+                    System.out.printf("%-4d", matrizAdy[i][j].getTiempo()); // Mostrar tiempo de la arista
+                } else {
+                    System.out.print("X   "); // No hay arista
+                }
+            }
+            System.out.println();
+        }
+    }
+
 
     /**
      * Función: obtenerDistanciaEuclidiana
@@ -216,3 +250,5 @@ public class Grafo {
         }
     }
 }
+
+//arbol prim y kruskal

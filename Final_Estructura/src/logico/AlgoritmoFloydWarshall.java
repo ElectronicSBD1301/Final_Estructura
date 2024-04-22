@@ -83,7 +83,7 @@ public class AlgoritmoFloydWarshall {
 		for (int i = 0; i < numVertices; i++) {
 			for (int j = 0; j < numVertices; j++) {
 				if (distancias[i][j] == Integer.MAX_VALUE) {
-					System.out.print("INF\t");
+					System.out.print("X\t");
 				} else {
 					System.out.print(distancias[i][j] + "\t");
 				}

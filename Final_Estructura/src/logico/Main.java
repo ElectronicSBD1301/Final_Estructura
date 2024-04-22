@@ -58,8 +58,9 @@ public class Main {
 					System.out.println("1. Agregar vértice con peso");
 					System.out.println("2. Editar peso de arista");
 					System.out.println("3. Eliminar vértice");
-					System.out.println("4. Mostrar Matriz de Adyacencia");
-					System.out.println("5. Volver al menú principal");
+					System.out.println("4. Mostrar Matriz de Adyacencia (Distancia)");
+					System.out.println("5. Mostrar Matriz de Adyacencia (Tiempo)");
+					System.out.println("6. Volver al menú principal");
 					System.out.print("Seleccione una opción: ");
 					grafoChoice = scanner.nextInt();
 
@@ -89,11 +90,14 @@ public class Main {
 						grafo.imprimirMatrizAdyacencia();
 						break;
 					case 5:
+						grafo.imprimirMatrizAdyacenciaTiempo();
+						break;
+					case 6:
 						break;// Salir del menú Grafo y volver al menú principal
 					default:
 						System.out.println("Opción no válida. Por favor, seleccione una opción válida.");
 					}
-				} while (grafoChoice != 5);
+				} while (grafoChoice != 6);
 				break;
 			case 2:
 				System.out.println("Ingrese el origen y el destino separados por espacios:");
@@ -103,15 +107,25 @@ public class Main {
 				System.out.println("El camino desde " + origen + " hasta " + destino + " es: " + camino);
 				break;
 			case 3:
-				AlgoritmoPrim prim = new AlgoritmoPrim(grafo);
-				ArrayList<AristaAlgoritmos> arbolPrim = prim.generarArbolExpansionMinima();
-				System.out.println("Ã�rbol de expansiÃ³n mÃ­nima (Prim): " + arbolPrim);
-				break;
+			    AlgoritmoPrim prim = new AlgoritmoPrim(grafo);
+			    ArrayList<AristaAlgoritmos> arbolPrim = prim.generarArbolExpansionMinima();
+			    System.out.println("Arbol de expansión mínima (Prim): ");
+			    for (AristaAlgoritmos arista : arbolPrim) {
+			        System.out.println(arista.toString()); // Utiliza el método toString para imprimir la arista
+			    }
+			    System.out.println();
+			    break;
+
 			case 4:
-				AlgoritmoKruskal kruskal = new AlgoritmoKruskal(grafo);
-				ArrayList<AristaAlgoritmos> arbolKruskal = kruskal.generarArbolExpansionMinima();
-				System.out.println("arbol de expansion minima (Kruskal): " + arbolKruskal);
-				break;
+			    AlgoritmoKruskal kruskal = new AlgoritmoKruskal(grafo);
+			    ArrayList<AristaAlgoritmos> arbolKruskal = kruskal.generarArbolExpansionMinima();
+			    System.out.println("Arbol de expansión mínima (Kruskal): ");
+			    for (AristaAlgoritmos arista : arbolKruskal) {
+			        System.out.println(arista.toString()); // Utiliza el método toString para imprimir la arista
+			    }
+			    System.out.println();
+			    break;
+
 			case 5:
 				AlgoritmoFloydWarshall floydWarshall = new AlgoritmoFloydWarshall(grafo.numVer);
 				floydWarshall.inicializarDistancias(grafo);
