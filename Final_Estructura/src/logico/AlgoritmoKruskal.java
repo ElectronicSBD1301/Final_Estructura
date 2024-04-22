@@ -8,11 +8,24 @@ public class AlgoritmoKruskal {
     private Grafo grafo;
     private int numVertices;
 
+    /**
+     * Función: AlgoritmoKruskal
+     * Argumentos:
+     *    Grafo grafo: El grafo sobre el cual se aplicará el algoritmo de Kruskal.
+     * Objetivo: Constructor de la clase AlgoritmoKruskal.
+     * Retorno: Ninguno.
+     */
     public AlgoritmoKruskal(Grafo grafo) {
         this.grafo = grafo;
         this.numVertices = grafo.numVer;
     }
 
+    /**
+     * Función: generarArbolExpansionMinima
+     * Argumentos: Ninguno.
+     * Objetivo: Genera el árbol de expansión mínima utilizando el algoritmo de Kruskal.
+     * Retorno: ArrayList de AristaAlgoritmos que representa las aristas del árbol de expansión mínima.
+     */
     public ArrayList<AristaAlgoritmos> generarArbolExpansionMinima() {
         ArrayList<AristaAlgoritmos> arbolExpansion = new ArrayList<>();
         ArrayList<AristaAlgoritmos> aristas = obtenerAristas();
@@ -38,6 +51,12 @@ public class AlgoritmoKruskal {
         return arbolExpansion;
     }
 
+    /**
+     * Función: obtenerAristas
+     * Argumentos: Ninguno.
+     * Objetivo: Obtiene todas las aristas del grafo.
+     * Retorno: ArrayList de AristaAlgoritmos que representa todas las aristas del grafo.
+     */
     private ArrayList<AristaAlgoritmos> obtenerAristas() {
         ArrayList<AristaAlgoritmos> aristas = new ArrayList<>();
 

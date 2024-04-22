@@ -4,6 +4,13 @@ public class DisjointSet {
     private int[] parent;
     private int[] rank;
 
+    /**
+     * Función: DisjointSet
+     * Argumentos:
+     *    int size: El tamaño inicial del conjunto disjunto.
+     * Objetivo: Constructor de la clase DisjointSet.
+     * Retorno: Ninguno.
+     */
     public DisjointSet(int size) {
         parent = new int[size];
         rank = new int[size];
@@ -13,6 +20,13 @@ public class DisjointSet {
         }
     }
 
+    /**
+     * Función: find
+     * Argumentos:
+     *    int x: El elemento cuyo representante se busca.
+     * Objetivo: Encontrar el representante (raíz) del conjunto al que pertenece x.
+     * Retorno: int que representa el representante (raíz) de x.
+     */
     public int find(int x) {
         if (parent[x] != x) {
             parent[x] = find(parent[x]);
@@ -20,6 +34,14 @@ public class DisjointSet {
         return parent[x];
     }
 
+    /**
+     * Función: union
+     * Argumentos:
+     *    int x: Un elemento del primer conjunto.
+     *    int y: Un elemento del segundo conjunto.
+     * Objetivo: Unir los conjuntos que contienen x e y.
+     * Retorno: Ninguno.
+     */
     public void union(int x, int y) {
         int rootX = find(x);
         int rootY = find(y);

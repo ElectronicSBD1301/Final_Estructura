@@ -7,11 +7,26 @@ public class AlgoritmoDijkstraTiempo {
     private Grafo grafo;
     private int numVertices;
 
+    /**
+     * Función: AlgoritmoDijkstraTiempo
+     * Argumentos:
+     *    Grafo grafo: El grafo sobre el cual se ejecutará el algoritmo de Dijkstra por tiempo.
+     * Objetivo: Constructor de la clase AlgoritmoDijkstraTiempo.
+     * Retorno: Ninguno.
+     */
     public AlgoritmoDijkstraTiempo(Grafo grafo) {
         this.grafo = grafo;
         this.numVertices = grafo.numVer;
     }
 
+    /**
+     * Función: calcularCaminoMinTiempo
+     * Argumentos:
+     *    int origen: El nodo de inicio del camino.
+     *    int destino: El nodo de destino del camino.
+     * Objetivo: Calcula el camino óptimo desde el nodo de origen al nodo de destino minimizando el tiempo utilizando el algoritmo de Dijkstra.
+     * Retorno: ArrayList<Integer> que representa el camino óptimo desde el nodo de origen al nodo de destino minimizando el tiempo. Devuelve una lista vacía si no se encuentra un camino.
+     */
     public ArrayList<Integer> calcularCaminoMinTiempo(int origen, int destino) {
         int[] distancias = new int[numVertices];
         boolean[] visitados = new boolean[numVertices];
@@ -61,6 +76,14 @@ public class AlgoritmoDijkstraTiempo {
         return rutaOptima;
     }
 
+    /**
+     * Función: minDistancia
+     * Argumentos:
+     *    int[] distancias: Arreglo de distancias desde el origen a cada nodo.
+     *    boolean[] visitados: Arreglo que indica si un nodo ha sido visitado.
+     * Objetivo: Encuentra el índice del vértice no visitado con la menor distancia desde el origen.
+     * Retorno: El índice del vértice con la menor distancia.
+     */
     private int minDistancia(int[] distancias, boolean[] visitados) {
         int min = Integer.MAX_VALUE;
         int minIndex = -1;

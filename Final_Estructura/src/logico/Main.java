@@ -5,6 +5,13 @@ import java.util.Scanner;
 import java.util.ArrayList;
 
 public class Main {
+	
+    /**
+     * Función: main
+     * Argumentos: String[] args
+     * Objetivo: Función principal que inicia el programa y muestra un menú de opciones al usuario.
+     * Retorno: Ninguno (void).
+    */
 
 	public static void main(String[] args) {
 

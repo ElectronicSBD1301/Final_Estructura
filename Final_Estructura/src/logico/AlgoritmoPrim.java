@@ -1,24 +1,36 @@
 package logico;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class AlgoritmoPrim {
     private Grafo grafo;
     private int numVertices;
 
+    /**
+     * Función: AlgoritmoPrim
+     * Argumentos:
+     *    Grafo grafo: El grafo sobre el cual se aplicará el algoritmo de Prim.
+     * Objetivo: Constructor de la clase AlgoritmoPrim.
+     * Retorno: Ninguno.
+     */
     public AlgoritmoPrim(Grafo grafo) {
         this.grafo = grafo;
         this.numVertices = grafo.numVer;
     }
 
+    /**
+     * Función: generarArbolExpansionMinima
+     * Argumentos: Ninguno.
+     * Objetivo: Genera el árbol de expansión mínima utilizando el algoritmo de Prim.
+     * Retorno: ArrayList de AristaAlgoritmos que representa las aristas del árbol de expansión mínima.
+     */
     public ArrayList<AristaAlgoritmos> generarArbolExpansionMinima() {
         boolean[] visitado = new boolean[numVertices];
         ArrayList<AristaAlgoritmos> arbolExpansion = new ArrayList<>();
         visitado[0] = true; // Empezamos desde el primer nodo
 
         while (arbolExpansion.size() < numVertices - 1) {
-        	AristaAlgoritmos aristaMinima = null;
+            AristaAlgoritmos aristaMinima = null;
             int pesoMinimo = Integer.MAX_VALUE;
 
             for (int i = 0; i < numVertices; i++) {

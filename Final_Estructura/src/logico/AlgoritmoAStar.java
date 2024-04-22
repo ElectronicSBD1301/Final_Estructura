@@ -8,10 +8,25 @@ import java.util.PriorityQueue;
 public class AlgoritmoAStar {
     private Grafo grafo;
 
+    /**
+     * Función: AlgoritmoAStar
+     * Argumentos:
+     *    Grafo grafo: El grafo sobre el cual se ejecutará el algoritmo A*.
+     * Objetivo: Constructor de la clase AlgoritmoAStar.
+     * Retorno: Ninguno.
+     */
     public AlgoritmoAStar(Grafo grafo) {
         this.grafo = grafo;
     }
 
+    /**
+     * Función: calcularCamino
+     * Argumentos:
+     *    int origen: El nodo de inicio del camino.
+     *    int destino: El nodo de destino del camino.
+     * Objetivo: Calcula el camino óptimo desde el nodo de origen al nodo de destino utilizando el algoritmo A*.
+     * Retorno: ArrayList<Integer> que representa el camino óptimo desde el nodo de origen al nodo de destino. Devuelve null si no se encuentra un camino.
+     */
     public ArrayList<Integer> calcularCamino(int origen, int destino) {
         PriorityQueue<Nodo> colaPrioridad = new PriorityQueue<>(Comparator.comparingInt(n -> n.f));
         HashSet<Integer> visitados = new HashSet<>();
@@ -58,7 +73,14 @@ public class AlgoritmoAStar {
         return null;//Solo si no encuentra un camino
     }
 
-    // MÃ©todo para reconstruir el camino Ã³ptimo desde el nodo destino al origen
+    /**
+     * Función: reconstruirCamino
+     * Argumentos:
+     *    int destino: El nodo de destino del camino.
+     *    int[] padres: Un arreglo que contiene los padres de cada nodo en el camino.
+     * Objetivo: Reconstruye el camino óptimo desde el nodo destino al nodo origen.
+     * Retorno: ArrayList<Integer> que representa el camino óptimo desde el nodo destino al nodo origen.
+     */
     private ArrayList<Integer> reconstruirCamino(int destino, int[] padres) {
         ArrayList<Integer> camino = new ArrayList<>();
         camino.add(destino);
@@ -70,10 +92,13 @@ public class AlgoritmoAStar {
         return camino;
     }
 
+    /**
+     * Clase interna para representar un nodo en el algoritmo A*.
+     */
     private static class Nodo {
         int indice;
         int g; // Costo real desde el origen al nodo
-        int f; // FunciÃ³n de evaluaciÃ³n
+        int f; // Función de evaluación
 
         public Nodo(int indice, int g, int f) {
             this.indice = indice;

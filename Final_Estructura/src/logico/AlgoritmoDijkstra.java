@@ -10,6 +10,13 @@ public class AlgoritmoDijkstra {
 	private boolean[] visitado;
 	private int[] padre;
 
+	/**
+	 * Función: AlgoritmoDijkstra
+	 * Argumentos:
+	 *    Grafo grafo: El grafo sobre el cual se ejecutará el algoritmo de Dijkstra.
+	 * Objetivo: Constructor de la clase AlgoritmoDijkstra.
+	 * Retorno: Ninguno.
+	 */
 	public AlgoritmoDijkstra(Grafo grafo) {
 		this.grafo = grafo;
 		this.numVertices = grafo.numVer;
@@ -20,6 +27,14 @@ public class AlgoritmoDijkstra {
 		Arrays.fill(padre, -1);
 	}
 
+	/**
+	 * Función: calcularCamino
+	 * Argumentos:
+	 *    int origen: El nodo de inicio del camino.
+	 *    int destino: El nodo de destino del camino.
+	 * Objetivo: Calcula el camino más corto desde el nodo de origen al nodo de destino utilizando el algoritmo de Dijkstra.
+	 * Retorno: ArrayList<Integer> que representa el camino más corto desde el nodo de origen al nodo de destino. Devuelve una lista vacía si no se encuentra un camino.
+	 */
 	public ArrayList<Integer> calcularCamino(int origen, int destino) {
 		Arrays.fill(distancias, Integer.MAX_VALUE);
 		Arrays.fill(visitado, false);
@@ -42,6 +57,12 @@ public class AlgoritmoDijkstra {
 		return reconstruirCamino(destino);
 	}
 
+	/**
+	 * Función: obtenerVerticeMinimo
+	 * Argumentos: Ninguno.
+	 * Objetivo: Obtiene el vértice no visitado con la menor distancia desde el origen.
+	 * Retorno: El índice del vértice con la menor distancia.
+	 */
 	private int obtenerVerticeMinimo() {
 		int minDistancia = Integer.MAX_VALUE;
 		int minVertice = -1;
@@ -54,13 +75,19 @@ public class AlgoritmoDijkstra {
 		return minVertice;
 	}
 
+	/**
+	 * Función: reconstruirCamino
+	 * Argumentos:
+	 *    int destino: El nodo de destino del camino.
+	 * Objetivo: Reconstruye el camino más corto desde el nodo destino al nodo origen.
+	 * Retorno: ArrayList<Integer> que representa el camino más corto desde el nodo destino al nodo origen.
+	 */
 	private ArrayList<Integer> reconstruirCamino(int destino) {
 		ArrayList<Integer> camino = new ArrayList<>();
 		int actual = destino;
 		while (actual != -1) {
 			camino.add(actual);
-			// Verifica si el padre del nodo actual es -1, lo que indica que no hay camino
-			// hacia atrás
+			// Verifica si el padre del nodo actual es -1, lo que indica que no hay camino hacia atrás
 			if (padre[actual] == -1) {
 				break; // Salir del bucle si no hay camino hacia atrás
 			}
@@ -72,5 +99,4 @@ public class AlgoritmoDijkstra {
 		}
 		return caminoInvertido;
 	}
-
 }
